@@ -1,3 +1,9 @@
 .container{
     height: 100vh;
 }
+
+.countDownContainer{
+    background-color: black!important;
+    width: 70px;
+    height: 70px;
+}
