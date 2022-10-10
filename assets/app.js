@@ -25,10 +25,10 @@ const weekdays = [
 
 const giveaway = document.querySelector(".giveaway")
 const deadLine = document.querySelector(".deadLine")
-const item = document.querySelectorAll(".deadLine h4")
+const items = document.querySelectorAll(".deadLine h4")
 
-const futureDate = new Date(2022, 11, 25, 12, 30, 00);
-console.log(futureDate)
+const futureDate = new Date(2022, 9, 15, 10, 30, 0);
+// console.log(futureDate)
 
 const year = futureDate.getFullYear();
 
@@ -43,7 +43,7 @@ const hour = futureDate.getHours();
 const minute = futureDate.getMinutes();
 const date = futureDate.getDate();
 
-giveaway.innerHTML = `Giveaway Ends on ${weekday}, ${date} ${month} ${year} ${hour}:${minute}am`
+giveaway.innerHTML = `Giveaway Ends on ${weekday}, ${date} ${month} ${year} ${hour}:${minute}`
 
 //future time
 const futureTime = futureDate.getTime();
@@ -67,8 +67,24 @@ const getRemainingTime = () => {
     const oneMinute = 60 * 1000;
 
     //calculating the actual time left
-    const days = timeLeft / oneDay;
-    console.log(days);
+    let days = timeLeft / oneDay;
+    days = Math.floor(days)
+
+    let hours = Math.floor((timeLeft % oneDay) / oneHour);
+
+    let minutes = Math.floor((timeLeft % oneHour) / oneMinute);
+
+    let seconds = Math.floor((timeLeft % oneMinute) / 1000);
+
+
+
+
+    //set values array
+    const values = [days, hours, minutes, seconds];
+
+    items.forEach((item, index) => {
+        item.innerHTML = values[index];
+    })
 
 }
 
