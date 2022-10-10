@@ -24,10 +24,10 @@ const weekdays = [
 ];
 
 const giveaway = document.querySelector(".giveaway")
-const deadLine = document.querySelector(".deadLine")
+const deadLineFormat = document.querySelector(".deadLineFormat")
 const items = document.querySelectorAll(".deadLine h4")
 
-const futureDate = new Date(2022, 9, 15, 10, 30, 0);
+const futureDate = new Date(2022, 9, 11, 12, 30, 0);
 // console.log(futureDate)
 
 const year = futureDate.getFullYear();
@@ -54,7 +54,7 @@ const getRemainingTime = () => {
     // console.log(today)
 
     let timeLeft = futureTime - currentTime;
-    console.log(timeLeft)
+    // console.log(timeLeft)
 
     //1day = 24hr
     //1hour = 30mins
@@ -91,6 +91,11 @@ const getRemainingTime = () => {
     items.forEach((item, index) => {
         item.innerHTML = format(values[index]);
     })
+
+    if (timeLeft < 0) {
+        clearInterval(countdownTime);
+        deadLineFormat.innerHTML = `<h5 class="expired text-danger">Sorry, This Giveaway Has Ended</h5>`
+    }
 
 }
 const countdownTime = setInterval(getRemainingTime, 1000)
