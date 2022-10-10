@@ -96,7 +96,6 @@ const getRemainingTime = () => {
         clearInterval(countdownTime);
         deadLineFormat.innerHTML = `<h5 class="expired text-danger">Sorry, This Giveaway Has Ended</h5>`
     }
-
 }
 const countdownTime = setInterval(getRemainingTime, 1000)
 getRemainingTime();
