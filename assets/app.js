@@ -37,7 +37,7 @@ month = months[month];
 
 let weekday = futureDate.getDay();
 weekday = weekdays[weekday]
-console.log(weekday)
+// console.log(weekday)
 
 const hour = futureDate.getHours();
 const minute = futureDate.getMinutes();
@@ -50,8 +50,26 @@ const futureTime = futureDate.getTime();
 // console.log(futureTime)
 
 const getRemainingTime = () => {
-    const today = new Date().getTime();
+    const currentTime = new Date().getTime();
     // console.log(today)
+
+    let timeLeft = futureTime - currentTime;
+    console.log(timeLeft)
+
+    //1day = 24hr
+    //1hour = 30mins
+    //1minute = 60sec
+    //1sec = 1000ms
+
+    //calculating the number of ms that makes a day
+    const oneDay = 24 * 60 * 60 * 1000;
+    const oneHour = 60 * 60 * 1000;
+    const oneMinute = 60 * 1000;
+
+    //calculating the actual time left
+    const days = timeLeft / oneDay;
+    console.log(days);
+
 }
 
 getRemainingTime();
