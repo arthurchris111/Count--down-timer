@@ -76,16 +76,22 @@ const getRemainingTime = () => {
 
     let seconds = Math.floor((timeLeft % oneMinute) / 1000);
 
-
-
+    //time format
+    const format = (item) => {
+        if (item < 10) {
+            return (item = `0${item}`)
+        } else {
+            return item
+        }
+    }
 
     //set values array
     const values = [days, hours, minutes, seconds];
 
     items.forEach((item, index) => {
-        item.innerHTML = values[index];
+        item.innerHTML = format(values[index]);
     })
 
 }
-
+const countdownTime = setInterval(getRemainingTime, 1000)
 getRemainingTime();
